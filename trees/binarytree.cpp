@@ -1,15 +1,17 @@
 #include<iostream>
 using namespace std;
 
+// Structure for Binary tree params
 struct btree_node{
     btree_node *left;
     btree_node *right;
     int data;
-} ;
-class bst{
+};
+// Binary tree Class
+class bt{
     btree_node *root;
     public:
-    bst(){
+    bt(){
         root = NULL;
     }
     int isempty() {
@@ -18,9 +20,9 @@ class bst{
     void insert(int item);
     void displayBinaryTree();
     void printBinaryTree(btree_node *);
-
 };
-void bst::insert(int item){
+// Inserts item into tree
+void bt::insert(int item){
     btree_node *p = new btree_node;
     btree_node *parent;
     p->data = item;
@@ -45,23 +47,26 @@ void bst::insert(int item){
             parent->right = p;
     }
 }
-void bst::displayBinaryTree(){
+
+
+
+void bt::displayBinaryTree(){
     printBinaryTree(root);
 }
-void bst::printBinaryTree(btree_node *ptr){
+void bt::printBinaryTree(btree_node *ptr){
     if(ptr != NULL){
         printBinaryTree(ptr->left);
         cout << "  " << ptr->data << "     ";
         printBinaryTree(ptr->right);
     }
 }
+
 int main(){
-    bst b;
+    bt b;
     b.insert(5);
     b.insert(15);
     b.insert(45);
     b.insert(135);
-
     cout << "Binary tree created: " << endl;
     b.displayBinaryTree();
 }
